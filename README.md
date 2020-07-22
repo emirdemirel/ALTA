@@ -21,7 +21,7 @@ For instructions on Kaldi installation, please visit https://github.com/kaldi-as
 
 ### 2) Retrieve Data
 
-The s5 recipe is based on the DSing!300x30x2 dataset within Smule's [DAMP](https://ccrma.stanford.edu/damp/)[2] repository. To retrieve the DSing!300x30x2, you need to apply for authorization from https://ccrma.stanford.edu/damp/.
+The s5 recipe is based on the DSing!300x30x2 dataset within Smule's DAMP[2] repository. To retrieve the DSing!300x30x2, you need to apply for authorization from https://ccrma.stanford.edu/damp/.
 
 ## How to run
 
