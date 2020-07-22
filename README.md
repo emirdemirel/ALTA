@@ -37,7 +37,7 @@ We have provided the data files (at ```data/{train30_cleaned,dev,test}```) requi
 
 * Execute the pipeline:
 ```
-./run.sh $damp_data
+./run_damp.sh $damp_data
 ```
 
 * If you have any problems during the pipeline, look up for the relevant process in ```run.sh```
