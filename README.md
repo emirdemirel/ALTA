@@ -48,7 +48,7 @@ We have provided the data files (at ```data/{train30_cleaned,dev,test}```) requi
 
 Automatic Lyrics Transcription is the task of translating singing voice into text. Jusy like in hybrid speech recognition, our lyrics transcriber consists of separate acoustic, language and pronunciation models.
 
-![alt text](https://github.com/emirdemirel/ALTA/blob/master/img/img-git1.png?raw=true)
+![alt text](https://github.com/emirdemirel/ALTA/blob/master/img/img-git1.png?raw=true&s=200)
 
 **Acoustic Model**: Sequence discriminative training on MMI criteria.
 
@@ -59,8 +59,6 @@ The neural network architecture consists of 2D Convolutions, factorized time-del
 **Language Model**: We use the lyrics of recent (2015-2018) popular songs for training the LM (```s5/conf/corpus.txt```).
 
 **Pronunciation Model**: The standard CMU-Sphinx English pronunciation dictionary (http://www.speech.cs.cmu.edu/cgi-bin/cmudict). **(Work in progress :** The singing-adapted pronunciation dictionary will be provided soon, as well as grapheme based lexicons for modeling unseen words.**)**
-
-## Results
 
 
 ### References
