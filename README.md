@@ -48,7 +48,7 @@ We have provided the data files (at ```data/{train30_cleaned,dev,test}```) requi
 
 Automatic Lyrics Transcription is the task of translating singing voice into text. Jusy like in hybrid speech recognition, our lyrics transcriber consists of separate acoustic, language and pronunciation models.
 
-![alt text](https://github.com/emirdemirel/ALTA/blob/master/img/img-git1.png?raw=true&s=200)
+![alt text](https://github.com/emirdemirel/ALTA/blob/master/img/img-git1.png?raw=true&s=100)
 
 **Acoustic Model**: Sequence discriminative training on MMI criteria.
 
