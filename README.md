@@ -51,12 +51,14 @@ Automatic Lyrics Transcription is the task of translating singing voice into tex
 <p align="center">
   <img src="https://github.com/emirdemirel/ALTA/blob/master/img/img-git1.png" width="550" height="160">
 </p>
+
 **Acoustic Model**: Sequence discriminative training on MMI criteria.
 
 The neural network architecture consists of 2D Convolutions, factorized time-delay and self-attention layers:
 <p align="center">
     <img src="https://github.com/emirdemirel/ALTA/blob/master/img/img-git2.png?raw=true" width="250" height="310">
 </p>
+
 **Language Model**: We use the lyrics of recent (2015-2018) popular songs for training the LM (```s5/conf/corpus.txt```).
 
 **Pronunciation Model**: The standard CMU-Sphinx English pronunciation dictionary (http://www.speech.cs.cmu.edu/cgi-bin/cmudict). 
