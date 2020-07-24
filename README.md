@@ -59,7 +59,9 @@ The neural network architecture consists of 2D Convolutions, factorized time-del
 </p>
 **Language Model**: We use the lyrics of recent (2015-2018) popular songs for training the LM (```s5/conf/corpus.txt```).
 
-**Pronunciation Model**: The standard CMU-Sphinx English pronunciation dictionary (http://www.speech.cs.cmu.edu/cgi-bin/cmudict). **(Work in progress :** The singing-adapted pronunciation dictionary will be provided soon, as well as grapheme based lexicons for modeling unseen words.**)**
+**Pronunciation Model**: The standard CMU-Sphinx English pronunciation dictionary (http://www.speech.cs.cmu.edu/cgi-bin/cmudict). 
+
+**(Work in progress :** The singing-adapted pronunciation dictionary will be provided soon, as well as grapheme based lexicons for modeling unseen words.**)**
 
 
 ### References
