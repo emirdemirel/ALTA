@@ -13,6 +13,8 @@ If you use this repository, please cite it as follows:
 }
 ```
 
+Link to paper : https://arxiv.org/abs/2007.06486
+
 ## Setup
 
 ### 1) Kaldi  installation
