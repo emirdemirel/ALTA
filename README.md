@@ -9,6 +9,7 @@ If you use this repository, please cite it as follows:
   title={Automatic lyrics transcription using dilated convolutional neural networks with self-attention},
   author={Demirel, Emir and Ahlback, Sven and Dixon, Simon},
   booktitle={International Joint Conference on Neural Networks},
+  publisher={IEEE},
   year={2020}
 }
 ```
