@@ -52,7 +52,7 @@ Automatic Lyrics Transcription is the task of translating singing voice into tex
   <img src="https://github.com/emirdemirel/ALTA/blob/master/img/img-git1.png" width="550" height="160">
 </p>
 
-**Acoustic Model**: Sequence discriminative training on MMI criteria.
+**Acoustic Model**: Sequence discriminative training on MMI criteria[4].
 
 The neural network architecture consists of 2D Convolutions, factorized time-delay and self-attention layers:
 <p align="center">
@@ -72,3 +72,5 @@ The neural network architecture consists of 2D Convolutions, factorized time-del
 [2] Digital Archive of Mobile Performances (DAMP) portal hosted by the Stanford Center for Computer Research in Music and Acoustics (CCRMA) (https://ccrma.stanford.edu/damp/)
 
 [3] Dabike, Gerardo Roa, and Jon Barker. "Automatic Lyric Transcription from Karaoke Vocal Tracks: Resources and a Baseline System." INTERSPEECH. 2019.
+
+[4] Povey, Daniel, et al. "Purely sequence-trained neural networks for ASR based on lattice-free MMI." Interspeech. 2016.
