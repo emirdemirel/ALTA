@@ -44,6 +44,9 @@ We have provided the data files (at ```data/{train30_cleaned,dev,test}```) requi
 
 **NOTE**: If you use ```dev``` and ```test``` sets in your experiments, please cite [3]
 
+## System Details
+
+Automatic Lyrics Transcription is the task of translating singing voice into text. As in hybrid speech recognition, our
 
 ### References
 [1] Povey, Daniel, et al. "The Kaldi speech recognition toolkit." IEEE 2011 workshop on automatic speech recognition and understanding. No. CONF. IEEE Signal Processing Society, 2011.
