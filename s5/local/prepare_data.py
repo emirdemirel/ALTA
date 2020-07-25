@@ -18,34 +18,20 @@ class DataSet:
     def add_utterance(self, utt, recording):
 
         text = utt["text"]
-        #print(recording)
         arrangement, performance, country, gender, user = recording[:-4].split("-")
-        #print(recording)
-        # the following mapping is necessary for errors in gender in country IN
         insensitive_none = re.compile(re.escape('none'), re.IGNORECASE)
-
-        #gender = insensitive_none.sub('', utt["gender"])
         spk = "{}{}".format(insensitive_none.sub('', gender).upper(), insensitive_none.sub('', user))
         rec_id = recording[:-4].replace('None',"")
-
-        #print(spk)
-
         utt_id = "{}-{}-{}-{}-{}-{:03}".format(spk, arrangement, performance, country, gender.upper(), utt["index"])
-        #print(utt_id)
         g = utt_id[0]      
-        #print(g) 
         if '-'+g+'-' not in rec_id:
             print(spk)
             print(rec_id)
             print(g)
-
         start = utt["start"]
         end = utt["end"]
-
         wavpath = join(country, "{}{}".format(country, "Vocals"), recording)
-
         gender = gender.replace('none',"")
-        #print(gender)
 
         self._add_segment(utt_id, rec_id, start, end)
         self._add_spk2gender(spk, gender)
@@ -57,11 +43,9 @@ class DataSet:
          
     def _add_segment(self, utt_id, rec_id, start, end):
         self.segments.append("{} {} {:.3f} {:.3f}".format(utt_id, rec_id, start, end))
-	#self.segments.append("{} {} {:.3f} {:.3f}".format(utt_id, rec_id, start, end))
 
     def _add_spk2gender(self, spk, gender):
         gender = gender.lower().replace('none',"")
-        #print(gender)
         self.spk2gender.append("{} {}".format(spk, gender))
 
     def _add_text(self, utt_id, text):
@@ -90,28 +74,20 @@ class DataSet:
 
 
 def read_json(filepath):
-    try:  # Read the json
+    try: 
         with open(filepath) as data_file:
             data = json.load(data_file)
-    except json.decoder.JSONDecodeError:  # Json has an extra first line. Error when was created
+    except json.decoder.JSONDecodeError:
         data = []
-
     return data
 
 
 def map_rec2chec(db_path, countries):
-    """
-    Method read all the original audio tracks and create a dict  {<checksum>: <recording>}
-    :param db_path: string, path to root of DAMP Sing!
-    :return: dict
-    """
     rec2chec = {}
     for country in countries:
         recordings = [f for f in listdir(join(db_path, country, country + "Vocals")) if f.endswith(".m4a")]
         for record in recordings:
-            rec2chec[hashlib.md5(open(join(db_path, country, country + "Vocals", record), 'rb').read()).hexdigest()] = record
-
-         
+            rec2chec[hashlib.md5(open(join(db_path, country, country + "Vocals", record), 'rb').read()).hexdigest()] = record         
     return rec2chec
 
 
@@ -121,11 +97,9 @@ def main(args):
     utts_path = args.utterances
     dset = args.dset
 
-    countries = ["GB"]
-    countries += ["US", "AU"] if dset in ["train3", "train30"] else []
-    countries += ['AE', 'AR', 'BR', 'CL', 'CN', 'DE', 'ES', 'FR', 'HU',
+    countries = ["GB","US", "AU",'AE', 'AR', 'BR', 'CL', 'CN', 'DE', 'ES', 'FR', 'HU',
                   'ID', 'IN', 'IQ', 'IR', 'IT', 'JP', 'KR', 'MX', 'MY',
-                  'NO', 'PH', 'PT', 'RU', 'SA', 'SG', 'TH', 'VN', 'ZA'] if dset in ["train30"] else []
+                  'NO', 'PH', 'PT', 'RU', 'SA', 'SG', 'TH', 'VN', 'ZA']
 
     performances = map_rec2chec(db_path, countries)
     utterances = read_json(utts_path)

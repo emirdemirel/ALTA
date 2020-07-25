@@ -22,7 +22,7 @@ audio_path=$1
 [[ ! -L "rnnlm" ]] && ln -s $KALDI_ROOT/egs/wsj/s5/rnnlm
 
 
-trainset=train30_cleaned
+trainset=train
 devset=dev
 testset=test
 
