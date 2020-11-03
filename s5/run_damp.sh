@@ -12,7 +12,6 @@ set -e # exit on error
 
 # End configuration section
 
-. ./utils/parse_options.sh
 
 audio_path=$1 
 
@@ -20,6 +19,8 @@ audio_path=$1
 [[ ! -L "steps" ]] && ln -s $KALDI_ROOT/egs/wsj/s5/steps
 [[ ! -L "utils" ]] && ln -s $KALDI_ROOT/egs/wsj/s5/utils
 [[ ! -L "rnnlm" ]] && ln -s $KALDI_ROOT/egs/wsj/s5/rnnlm
+
+. ./utils/parse_options.sh
 
 
 trainset=train
