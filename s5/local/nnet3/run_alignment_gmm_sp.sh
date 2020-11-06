@@ -2,10 +2,9 @@
 
 set -e -o pipefail
 
-lang_suffix=
 stage=
 nj=39
-train_set=train30_cleaned      
+train_set=train     
 test_sets="dev test"
 gmm=tri3b             # This specifies a GMM-dir from the features of the type you're training the system on;
                               # it should contain alignments for 'train_set'.
