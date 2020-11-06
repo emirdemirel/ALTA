@@ -50,7 +50,7 @@ if [ $stage -le 10 ]; then
     exit 1
   fi
   echo "$0: aligning with the perturbed low-resolution data"
-  steps/align_fmllr.sh --nj $nj --cmd "$train_cmd" \
+  steps/align_fmllr.sh --nj $nj --cmd "$train_cmd" --beam 40 --retry_beam 500 \
     data/${train_set}_sp data/lang$lang_suffix $gmm_dir $ali_dir
 fi
 
@@ -58,7 +58,7 @@ fi
 if [ $stage -le 11 ]; then
   # Get the alignments as lattices (gives the chain training more freedom).
   # use the same num-jobs as the alignments
-  steps/align_fmllr_lats.sh --nj 100 --cmd "$train_cmd" data/${train_set}_sp \
+  steps/align_fmllr_lats.sh --nj 100 --cmd "$train_cmd" --beam 40 --retry_beam 500 data/${train_set}_sp \
     data/lang${lang_suffix} $gmm_dir $lat_dir
   rm $lat_dir/fsts.*.gz # save space
 fi
