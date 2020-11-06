@@ -2,11 +2,10 @@
 
 set -e -o pipefail
 
-stage=7
+stage=1
 
 nj=30
-#train_set=train30
-train_set=train30_cleaned
+train_set=train
 test_sets="dev test"
 gmm=tri3b        # this is the source gmm-dir that we'll use for alignments
 
@@ -116,7 +115,7 @@ if [ $stage -le 3 ]; then
   echo 
   local/nnet3/run_ivector_training.sh \
     --stage 0 --nj $nj \
-    --train-set $train_set --lang_suffix $lex_iter \
+    --train-set $train_set \
 fi
 
 if [ $stage -le 4 ]; then
@@ -139,7 +138,7 @@ train_data_dir=data/${train_set}_sp_hires
 train_ivector_dir=exp/nnet3${nnet3_affix}/ivectors_${train_set}_sp_hires
 lores_train_data_dir=data/${train_set}_sp
 
-tree_dir=exp$lang_suffix/chain${nnet3_affix}/tree_a_sp$lang_suffix
+tree_dir=exp/chain${nnet3_affix}/tree_a_sp
 lang=data/lang_chain
 
 if [ $stage -le 5 ]; then
