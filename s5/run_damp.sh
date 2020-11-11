@@ -78,41 +78,41 @@ if [[ $stage -le 3 ]]; then
     echo
 
     steps/train_mono.sh --nj $nj --cmd "$train_cmd"  \
-          data/${trainset} data/lang$lex_iter exp$lex_iter/mono
+          data/${trainset} data/lang exp/mono
 
     steps/align_si.sh --nj $nj --cmd "$train_cmd" \
-      data/${trainset} data/lang$lex_iter exp$lex_iter/mono exp$lex_iter/mono_ali
+      data/${trainset} data/lang exp/mono exp/mono_ali
 
-    utils/mkgraph.sh data/lang_4G$lex_iter exp$lex_iter/mono exp$lex_iter/mono/graph
+    utils/mkgraph.sh data/lang_4G exp/mono exp/mono/graph
 
     echo
     echo "===> 1) Triphone Model Training with delta Features"
     echo "=====  $(date +"%D_%T") ====="    
 
     steps/train_deltas.sh  --cmd "$train_cmd" 2000 15000 \
-      data/${trainset} data/lang$lex_iter exp$lex_iter/mono_ali exp$lex_iter/tri1
+      data/${trainset} data/lang exp/mono_ali exp/tri1
 
     steps/align_si.sh --nj $nj --cmd "$train_cmd"  \
-     data/${trainset} data/lang$lex_iter exp$lex_iter/tri1 exp$lex_iter/tri1_ali
+     data/${trainset} data/lang exp/tri1 exp/tri1_ali
       
     echo
     echo "===> 2) Triphone Model Training with LDA-MLLT Features"
     echo "=====  $(date +"%D_%T") ====="
 
     steps/train_lda_mllt.sh --cmd "$train_cmd" 2500 20000 \
-      data/${trainset} data/lang$lex_iter exp$lex_iter/tri1_ali exp$lex_iter/tri2b
+      data/${trainset} data/lang exp/tri1_ali exp/tri2b
 
     steps/align_si.sh --nj $nj --cmd "$train_cmd"  \
-      data/${trainset} data/lang$lex_iter exp$lex_iter/tri2b exp$lex_iter/tri2b_ali
+      data/${trainset} data/lang exp/tri2b exp/tri2b_ali
       
     echo
     echo "===> 3) Triphone Model Training with Singer Adaptive Features"
     echo "=====  $(date +"%D_%T") ====="
    
     steps/train_sat.sh --cmd "$train_cmd" 3000 25000 \
-      data/${trainset} data/lang$lex_iter exp$lex_iter/tri2b_ali exp$lex_iter/tri3b
+      data/${trainset} data/lang exp/tri2b_ali exp/tri3b
 
-    utils/mkgraph.sh data/lang_4G$lex_iter exp$lex_iter/tri3b exp$lex_iter/tri3b/graph
+    utils/mkgraph.sh data/lang_4G exp/tri3b exp/tri3b/graph
    
     echo
     echo "------ End Train GMM-HMM --------"
@@ -145,14 +145,14 @@ if [[ $stage -le 5 ]]; then
 
     steps/decode_fmllr.sh --config conf/decode.config --nj 30 --cmd "$decode_cmd" \
       --scoring-opts "--min-lmwt 10 --max-lmwt 20" --num-threads 4  \
-      exp$lex_iter/tri3b/graph data/${devset} exp$lex_iter/tri3b/decode_${devset}
+      exp/tri3b/graph data/${devset} exp/tri3b/decode_${devset}
 
     # Scoring test model with the best
     lmwt=$(cat exp/tri3b/decode_${devset}/scoring_kaldi/wer_details/lmwt)
     wip=$(cat exp/tri3b/decode_${devset}/scoring_kaldi/wer_details/wip)
     steps/decode_fmllr.sh --config conf/decode.config --nj 12 --cmd "$decode_cmd" \
       --scoring-opts "--min_lmwt $lmwt --max_lmwt $lmwt --word_ins_penalty $wip" --num-threads 4  \
-      exp/tri3b/graph data/${testset_nus} exp/tri3b/decode_${testset_nus}
+      exp/tri3b/graph data/${testset} exp/tri3b/decode_${testset}
 
 fi
 
