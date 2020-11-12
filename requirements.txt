@@ -1,0 +1,5 @@
+argparse
+numpy
+hashlib
+json
+kaldiio
