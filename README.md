@@ -18,17 +18,26 @@ Link to paper : https://arxiv.org/abs/2007.06486
 
 ## Setup
 
-### 1) Kaldi  installation
+### 1) Kaldi
 This framework is built as a [Kaldi](http://kaldi-asr.org/)[1] recipe 
 For instructions on Kaldi installation, please visit https://github.com/kaldi-asr/kaldi
 
-### 2) Retrieve Data
+### 2) Dependencies
 
-The s5 recipe is based on the DSing!300x30x2 dataset within Smule's DAMP[2] repository. To retrieve the DSing!300x30x2, you need to apply for authorization from https://ccrma.stanford.edu/damp/.
+```
+pip install -r requirements.txt
+```
+
 
 ## How to run
 
 * Modify ```KALDI_ROOT``` in  ```s5/path.sh``` according to where your Kaldi installation is.
+
+### A) Running the lyrics transcription - training pipeline
+
+* Retrieve Data:
+
+The s5 recipe is based on the DSing!300x30x2 dataset within Smule's DAMP[2] repository. To retrieve the DSing!300x30x2, you need to apply for authorization from https://ccrma.stanford.edu/damp/.
 
 * Set the path to DAMP - Sing!300x30x2 data:
 
@@ -36,7 +45,7 @@ The s5 recipe is based on the DSing!300x30x2 dataset within Smule's DAMP[2] repo
 cd s5
 damp_data='path-to-your-damp-directory'
 ```
-We have provided the data files (at ```data/{train30_cleaned,dev,test}```) required in Kaldi pipelines for the ease of using this repository. 
+We have provided the data files (at ```data/{train,dev,test}```) required in Kaldi pipelines for the ease of using this repository. 
 
 * Execute the pipeline:
 ```
@@ -46,6 +55,21 @@ We have provided the data files (at ```data/{train30_cleaned,dev,test}```) requi
 * If you have any problems during the pipeline, look up for the relevant process in ```run.sh```
 
 **NOTE**: If you use ```dev``` and ```test``` sets in your experiments, please cite [3]
+
+### B) Extract frame-level Phoneme posteriorgrams:
+
+Run the script for extracting the phoneme posteriorgrams as follows:
+
+```
+audio_path='absolute-path-to-the-input-audio-file'
+save_path='path-to-save-the-output
+cd s5
+./extract_phn_posteriorgram.sh $audio_path $save_path
+```
+
+The output posteriorgrams are saved as numpy arrays (.npy).
+
+Note that we have used 16kHz for the sample rate and 10ms of hop size.
 
 ## System Details
 
