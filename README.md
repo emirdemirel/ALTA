@@ -36,7 +36,7 @@ The s5 recipe is based on the DSing!300x30x2 dataset within Smule's DAMP[2] repo
 cd s5
 damp_data='path-to-your-damp-directory'
 ```
-We have provided the data files (at ```data/{train30_cleaned,dev,test}```) required in Kaldi pipelines for the ease of using this repository. 
+We have provided the data files (at ```data/{train,dev,test}```) required in Kaldi pipelines for the ease of using this repository. 
 
 * Execute the pipeline:
 ```
