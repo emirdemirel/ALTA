@@ -13,9 +13,9 @@ echo "$train_set"
 
 nnet3_affix=_cleaned    # affix for exp/nnet3 directory to put iVector stuff in (e.g.
                               # in the tedlium recip it's _cleaned).
-gmm_dir=
-ali_dir=
-lat_dir=
+gmm_dir=exp/${gmm}
+ali_dir=exp/${gmm}_ali_${train_set}_sp
+lat_dir=exp/chain${nnet3_affix}/${gmm}_${train_set}_sp_lats
 
 
 echo "$0 $@" # Print the command line for logging
