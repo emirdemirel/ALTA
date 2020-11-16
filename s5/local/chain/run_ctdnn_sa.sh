@@ -172,7 +172,7 @@ if [ $stage -le 6 ]; then
   echo 
   local/nnet3/run_alignment_gmm_sp.sh \
     --stage 10 --nj $nj \
-    --train_set $train_set --test_sets-- $test_sets \
+    --train_set $train_set --test_sets $test_sets \
     --gmm_dir $gmm_dir --ali_dir $ali_dir --lat_dir $lat_dir
 fi
 
