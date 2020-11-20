@@ -106,8 +106,6 @@ if [ $stage -le 2 ]; then
 fi
 
 
-
-
 if [ $stage -le 3 ]; then
   echo " ====================== "
   echo " ---  i-Vector Training - for singer adaptive NN training ---  "
@@ -115,7 +113,7 @@ if [ $stage -le 3 ]; then
   echo 
   local/nnet3/run_ivector_training.sh \
     --stage 0 --nj $nj \
-    --train-set $train_set \
+    --train_set $train_set 
 fi
 
 if [ $stage -le 4 ]; then
@@ -125,7 +123,7 @@ if [ $stage -le 4 ]; then
   echo 
   local/nnet3/run_ivector_extraction.sh \
     --stage 0 --nj $nj \
-    --train-set $train_set --testsets "$devset $testset"
+    --train_set $train_set --test_sets "$devset $testset"
 
 fi
 
@@ -171,7 +169,7 @@ if [ $stage -le 6 ]; then
   echo " ====================== "
   echo 
   local/nnet3/run_alignment_gmm_sp.sh \
-    --stage 10 --nj $nj \
+    --stage 9 --nj $nj \
     --train_set $train_set --test_sets $test_sets \
     --gmm_dir $gmm_dir --ali_dir $ali_dir --lat_dir $lat_dir
 fi
