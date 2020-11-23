@@ -35,9 +35,9 @@ mfccdir=mfcc
 text_corpus=conf/corpus.txt
 
 if [ $stage -le 1 ]; then
-    #mkdir -p data/local/dict
-    #cp $text_corpus  data/local/corpus.txt  # text corpus for LM
-    #local/prepare_dict.sh --words 30000
+    mkdir -p data/local/dict
+    cp $text_corpus  data/local/corpus.txt  # text corpus for LM
+    local/prepare_dict.sh --words 30000
     utils/prepare_lang.sh data/local/dict "<UNK>" data/local/lang data/lang
 
     local/train_lms_srilm.sh \
