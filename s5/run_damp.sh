@@ -2,7 +2,7 @@
 
 # Begin configuration section
 nj=40
-stage=1
+stage=6
 decode_nj=1
 
 . ./path.sh
@@ -35,9 +35,9 @@ mfccdir=mfcc
 text_corpus=conf/corpus.txt
 
 if [ $stage -le 1 ]; then
-    mkdir -p data/local/dict
-    cp $text_corpus  data/local/corpus.txt  # text corpus for LM
-    local/prepare_dict.sh --words 30000
+    #mkdir -p data/local/dict
+    #cp $text_corpus  data/local/corpus.txt  # text corpus for LM
+    #local/prepare_dict.sh --words 30000
     utils/prepare_lang.sh data/local/dict "<UNK>" data/local/lang data/lang
 
     local/train_lms_srilm.sh \
@@ -158,7 +158,7 @@ if [[ $stage -le 5 ]]; then
 fi
 
 train_stage=-10    # Change this if you want to resume neural network training from where you paused
-chain_stage=0
+chain_stage=3
 if [[ $stage -le 6 ]]; then
     echo
     echo "=================="
