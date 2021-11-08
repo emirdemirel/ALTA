@@ -64,12 +64,12 @@ Automatic Lyrics Transcription is the task of translating singing voice into tex
 
 The easiest way to install this package is through Docker. For this you will need to have Docker engine installed in your machine. You can find the installation instructions for this [here](https://docs.docker.com/engine/install/).
 
-### 1) Build the Docker image
+#### 1) Build the Docker image
 To install the ALTA package in a Docker container, simply navigate to where this repository is located and run:
 ```
 docker build --tag alta:latest -f Dockerfile . 
 ```
-### 2) Run the Docker container
+#### 2) Run the Docker container
 
 ```
 docker run alta:latest
