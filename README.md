@@ -85,12 +85,10 @@ Jamendo(lyrics) is a benchmark evaluation set for both lyrics transcription and 
 
 ### B) Running the training pipeline
 
-There are two recipes included in this repository. The first one is the 
+There are two recipes included in this repository. The first one is a single-stream CTDNN - self-attention based acoustic model with RNNLM rescoring (1) presented in .., and the MStre-Net recipe which has a multistream cross-domain acoustic model(2), which is published in ISMIR2021.
 
-* Retrieve Data:
+For (1), please navigate to ```Model_SingleStream/ ```, and for (2), ```MStre-Net```. The recipe-specific Readme's are provided within these directories.
 
-The s5 recipe is based on the DSing!300x30x2 dataset within Smule's DAMP[2] repository. To retrieve the DSing!300x30x2,
-* Set the path to DAMP - Sing!300x30x2 data:
 
 ```
 cd s5
