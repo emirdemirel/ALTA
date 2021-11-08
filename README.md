@@ -15,7 +15,7 @@ Automatic Lyrics Transcription is the task of translating singing voice into tex
 **Acoustic Model**: Sequence discriminative training on LF-MMI criteria[2] (Kaldi-chain recipe). MStre-Net[3] proposes three improvements over the standard Kaldi-chain recipe:
  - The neural network is based on the multistream TDNN architecture with distinct TDNN streams.
  <p align="center">
-  <img src="https://github.com/emirdemirel/ALTA/blob/master/img/arch_multi_diverse.png" width="300" height="200">
+  <img src="https://github.com/emirdemirel/ALTA/blob/master/img/arch_multi_diverse.png" width="400" height="200">
 </p>
 
  - Cross-domain Training:
