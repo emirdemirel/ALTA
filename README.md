@@ -73,20 +73,6 @@ There are two recipes included in this repository. The first one is a single-str
 For (1), please navigate to ```Model_SingleStream/ ```, and for (2), ```MStre-Net```. The recipe-specific Readme's are provided within these directories.
 
 
-```
-cd s5
-damp_data='path-to-your-damp-directory'
-```
-We have provided the data files (at ```data/{train,dev,test}```) required in Kaldi pipelines for the ease of using this repository. 
-
-* Execute the pipeline:
-```
-./run_damp.sh $damp_data
-```
-
-* If you have any problems during the pipeline, look up for the relevant process in ```run.sh```
-
-**NOTE**: If you use ```dev``` and ```test``` sets in your experiments, please cite [3]
 
 ### C) (OPTIONAL) Extract frame-level Phoneme posteriorgrams:
 
