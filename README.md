@@ -83,7 +83,9 @@ This dataset is a subset of DALI, presented in .... It is the largest test set u
 
 Jamendo(lyrics) is a benchmark evaluation set for both lyrics transcription and audio-to-lyrics alignment tasks. It is also used in MIREX challenges. Data can be retrieved at https://github.com/f90/jamendolyrics .
 
-### A) Running the lyrics transcription - training pipeline
+### B) Running the training pipeline
+
+There are two recipes included in this repository. The first one is the 
 
 * Retrieve Data:
 
@@ -105,7 +107,7 @@ We have provided the data files (at ```data/{train,dev,test}```) required in Kal
 
 **NOTE**: If you use ```dev``` and ```test``` sets in your experiments, please cite [3]
 
-### B) Extract frame-level Phoneme posteriorgrams:
+### C) (OPTIONAL) Extract frame-level Phoneme posteriorgrams:
 
 Run the script for extracting the phoneme posteriorgrams as follows:
 
