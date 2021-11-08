@@ -23,9 +23,7 @@ A Kaldi[1] recipe for automatic lyrics transcription.
     + [Future Work](#future-work)
     + [Citation](#citation)
     + [References](#references)
-    + [Important Notice:](#important-notice-)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 ## System Details
