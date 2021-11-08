@@ -100,6 +100,9 @@ The output posteriorgrams are saved as numpy arrays (.npy).
 
 Note that we have used 16kHz for the sample rate and 10ms of hop size.
 
+### Future Work
+
+* End-to-end recipe based SpeechBrain toolkit.
 
 ### Citation
 
