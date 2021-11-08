@@ -36,7 +36,7 @@ docker build --tag alta:latest -f Dockerfile .
 ```
 ### 2) Run the Docker container
 
-
+docker run alta:latest
 
 ### B) Local Installation
 
@@ -56,12 +56,17 @@ pip install -r requirements.txt
 
 * Modify ```KALDI_ROOT``` in  ```s5/path.sh``` according to where your Kaldi installation is.
 
-### A) Retrieve the data:
+### A) Data preparation:
+#### 1) Retrieve the data:
 
 * DAMP:
 
 We use the Sing!300x30x2 data within the DAMP repository. To retrieve the data, you need to apply for authorization from https://ccrma.stanford.edu/damp/ .
 The train/dev/test splits are automatically done within this recipe.
+Please define the directory where you downloaded the dataset (```path-to-damp```) as follows:
+```
+datadir_damp='path-to-damp'
+```
 
 * DALI:
 
@@ -69,21 +74,70 @@ DALI_v2.0 is used to train the polyphonic and cross-domain lyrics transcription 
 
 https://github.com/gabolsgabs/DALI
 
+According to the repository, you can download the audio files under 'Getting the audio' section. Refer this as:
+```
+datadir_dali='path-to-dali'
+```
+
 * DALI-TALT:
 
 This dataset is a subset of DALI, presented in .... It is the largest test set used for evaluating polyphonic ALT models. The data can be retrieved via the tutorial at: https://github.com/emirdemirel/DALI-TestSet4ALT .
+```
+datadir_dali_talt='path-to-dali-talt'
+```
 
 * Jamendo:
 
-Jamendo(lyrics) is a benchmark evaluation set for both lyrics transcription and audio-to-lyrics alignment tasks. It is also used in MIREX challenges. Data can be retrieved at https://github.com/f90/jamendolyrics .
+Jamendo(lyrics) is a benchmark evaluation set for both lyrics transcription and audio-to-lyrics alignment tasks. It is also used in MIREX challenges. Data can be retrieved at https://github.com/f90/jamendolyrics . 
+```
+datadir_jamendo='path-to-jamendo'
+```
+
+#### 1) Locate:
+
+If you work locally, you can directly use the above defined variables to run the main script, so you can directly proceed to **Step B**
+
+##### Step 1-a (Docker use ONLY):
+ 
+Copy the datasets to the Docker container. First retrieve the Docker container ID by typing ```docker ps -a```, and find the relevant one with the image tag ```alta:latest```. Suppose your container ID is ```${docker_id}```. Then perform copying as follows:
+
+```
+docker cp ${datadir_damp}  ${docker_id}/ALTA/wav/damp 
+docker cp ${datadir_dali}  ${docker_id}/ALTA/wav/dali 
+docker cp ${datadir_dali_talt}  ${docker_id}/ALTA/wav/dali_talt 
+docker cp ${datadir_jamendo}  ${docker_id}/ALTA/wav/jamendo
+```
 
 ### B) Running the training pipeline
 
-There are two recipes included in this repository. The first one is a single-stream CTDNN - self-attention based acoustic model with RNNLM rescoring (1) presented in .., and the MStre-Net recipe which has a multistream cross-domain acoustic model(2), which is published in ISMIR2021.
+There are two recipes included in this repository. The first one is a single-stream CTDNN - self-attention based acoustic model with RNNLM rescoring (1) presented in IJCNN2020, and the MStre-Net recipe which has a multistream cross-domain acoustic model(2), which is published in ISMIR2021. The most recent model is the one in (2), so we recommend running te following script:
 
-For (1), please navigate to ```Model_SingleStream/ ```, and for (2), ```MStre-Net```. The recipe-specific Readme's are provided within these directories.
+```
+./run_mstrenet.sh --datadir_damp ${datadir_damp} --datadir_dali ${datadir_dali} \
+    --datadir_dali_talt ${datadir_dali_talt} --datadir_jamendo ${datadir_jamendo} \
+```
+If you'd like to see the help menu, simply type:
+```
+./run_mstrenet.sh --help true
+```
+which will output:
 
+```
+ Usage: ./run_mstrenet.sh
+ This is the main script for the training of the MStreNet
+ automatic lyrics transcription model (ISMIR2021).
+ You just have to specify where the datasets are located.
+ 
+ 
+ main options (for others, see top of script file)
+ --stage                                          # stage of the main running script"
+ --chain_stage                                    # stage for the DNN training pipeline (chain recipe at stage 13)"
+ --train_stage                                    # DNN training stage. Should be -10 to initialize the training"
+ --pretrained_model <model>                       # directory to a pretrained model (if specificed, i.e. models/ijcnn)."
+                                                  # If this is non-empty, the script will skip training and directly go to stage 14."
+ --nj <nj>                                        # number of parallel jobs" 
 
+```
 
 ### C) (OPTIONAL) Extract frame-level Phoneme posteriorgrams:
 
