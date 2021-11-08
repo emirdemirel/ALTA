@@ -1,22 +1,9 @@
-# ALTA - (A)utomatic (L)yrics (T)r(A)nscription
+# ALTA :
+## Automatic lyrics transcription using dilated convolutional neural networks with self-attention
 
-A kaldi recipe for automatic lyrics transcription task.
+A kaldi recipe for monophonic automatic lyrics transcription task using single-stream acoustic models and RNNLM rescoring. The neural network architecture has a self-attention layer on top, which is found to reduce complexity of the final decoding search space.
 
-
-
-If you use the MStreNet recipe, which is the state-of-the-art model for automatic lyrics transcription, please cite following paper:
-```
-  @article{demirel2021mstre,
-  title={MSTRE-Net: Multistreaming Acoustic Modeling for Automatic Lyrics Transcription},
-  author={Demirel, Emir and Ahlb{\"a}ck, Sven and Dixon, Simon},
-  booktitle={In proceedings of ISMIR2021},
-  year={2021}
-}
-```
-Link to paper : https://arxiv.org/pdf/2108.02625.pdf
-
-
-If you use the recipe for the single-stream approach with RNNLM rescoring, please cite the paper below:
+For more information, please refer to the paper below:
 ```
 @inproceedings{demirel2020,
   title={Automatic lyrics transcription using dilated convolutional neural networks with self-attention},
@@ -28,20 +15,6 @@ If you use the recipe for the single-stream approach with RNNLM rescoring, pleas
 ```
 
 Link to paper : https://arxiv.org/abs/2007.06486
-
-## Setup
-
-### 1) Kaldi
-
-This framework is built as a [Kaldi](http://kaldi-asr.org/)[1] recipe 
-For instructions on Kaldi installation, please visit https://github.com/kaldi-asr/kaldi
-
-### 2) Dependencies
-
-```
-pip install -r requirements.txt
-```
-
 
 ## How to run
 
@@ -59,7 +32,7 @@ The s5 recipe is based on the DSing!300x30x2 dataset within Smule's DAMP[2] repo
 cd s5
 damp_data='path-to-your-damp-directory'
 ```
-We have provided the data files (at ```data/{train,dev,test}```) required in Kaldi pipelines for the ease of using this repository. 
+We have provided the data files (at ```data/{train,dev,test}_damp```) required in Kaldi pipelines for the ease of using this repository. 
 
 * Execute the pipeline:
 ```
@@ -68,32 +41,16 @@ We have provided the data files (at ```data/{train,dev,test}```) required in Kal
 
 * If you have any problems during the pipeline, look up for the relevant process in ```run.sh```
 
-**NOTE**: If you use ```dev``` and ```test``` sets in your experiments, please cite [3]
-
-### B) Extract frame-level Phoneme posteriorgrams:
-
-Run the script for extracting the phoneme posteriorgrams as follows:
-
-```
-audio_path='absolute-path-to-the-input-audio-file'
-save_path='path-to-save-the-output
-cd s5
-./extract_phn_posteriorgram.sh $audio_path $save_path
-```
-
-The output posteriorgrams are saved as numpy arrays (.npy).
-
-Note that we have used 16kHz for the sample rate and 10ms of hop size.
 
 ## System Details
 
-Automatic Lyrics Transcription is the task of translating singing voice into text. Jusy like in hybrid speech recognition, our lyrics transcriber consists of separate acoustic, language and pronunciation models.
+Automatic Lyrics Transcription is the task of translating singing voice into text. Just like in hybrid speech recognition, our lyrics transcriber consists of separate acoustic, language and pronunciation models.
 
 <p align="center">
   <img src="https://github.com/emirdemirel/ALTA/blob/master/img/img-git1.png" width="550" height="160">
 </p>
 
-**Acoustic Model**: Sequence discriminative training on MMI criteria[4].
+**Acoustic Model**: Sequence discriminative training on MMI criteria[3].
 
 The neural network architecture consists of 2D Convolutions, factorized time-delay and self-attention layers:
 <p align="center">
@@ -104,17 +61,13 @@ The neural network architecture consists of 2D Convolutions, factorized time-del
 
 **Pronunciation Model**: The standard CMU-Sphinx English pronunciation dictionary (http://www.speech.cs.cmu.edu/cgi-bin/cmudict). 
 
-**(Work in progress :** The singing-adapted pronunciation dictionary will be provided soon, as well as grapheme based lexicons for modeling unseen words.**)**
-
 
 ### References
 [1] Povey, Daniel, et al. "The Kaldi speech recognition toolkit." IEEE 2011 workshop on automatic speech recognition and understanding. No. CONF. IEEE Signal Processing Society, 2011.
 
 [2] Digital Archive of Mobile Performances (DAMP) portal hosted by the Stanford Center for Computer Research in Music and Acoustics (CCRMA) (https://ccrma.stanford.edu/damp/)
 
-[3] Dabike, Gerardo Roa, and Jon Barker. "Automatic Lyric Transcription from Karaoke Vocal Tracks: Resources and a Baseline System." INTERSPEECH. 2019.
-
-[4] Povey, Daniel, et al. "Purely sequence-trained neural networks for ASR based on lattice-free MMI." Interspeech. 2016.
+[3] Povey, Daniel, et al. "Purely sequence-trained neural networks for ASR based on lattice-free MMI." Interspeech. 2016.
 
 ### Important Notice:
 This work is licensed under Creative Commons - Attribution-NonCommercial-ShareAlike 4.0 International, which means that the reusers can copy, distribute, remix, transform and build upon the material in any media providing the appropriate credits to this repository and to be used for non-commercial purposes.
