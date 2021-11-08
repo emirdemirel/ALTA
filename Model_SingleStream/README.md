@@ -1,4 +1,5 @@
-# ALTA - (A)utomatic (L)yrics (T)r(A)nscription
+# ALTA :
+## Automatic lyrics transcription using dilated convolutional neural networks with self-attention
 
 A kaldi recipe for monophonic automatic lyrics transcription task using single-stream acoustic models and RNNLM rescoring. The neural network architecture has a self-attention layer on top, which is found to reduce complexity of the final decoding search space.
 
