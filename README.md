@@ -33,6 +33,16 @@ Link to paper : https://arxiv.org/abs/2007.06486
 
 ### A) Docker Installation
 
+The easiest way to install this package is through Docker. For this you will need to have Docker engine installed in your machine. You can find the installation instructions for this [here](https://docs.docker.com/engine/install/).
+
+### 1) Build the Docker image
+To install the ALTA package in a Docker container, simply navigate to where this repository is located and run:
+```
+docker build --tag alta:latest -f Dockerfile . 
+```
+### 2) Run the Docker container
+
+
 
 ### B) Local Installation
 
