@@ -36,10 +36,6 @@ Automatic Lyrics Transcription is the task of translating singing voice into tex
 **Pronunciation Model**: A predefined lexicon that provides a mapping between words and their phonemic representations. We use the singing adapted version presented here[5].
 
 
-### MStre-Net
-
-There are 
-
 ## Setup
 
 ### A) Docker Installation
