@@ -103,6 +103,9 @@ The output posteriorgrams are saved as numpy arrays (.npy).
 
 Note that we have used 16kHz for the sample rate and 10ms of hop size.
 
+
+### Citation
+
 If you use the MStreNet recipe, which is the state-of-the-art model for automatic lyrics transcription, please cite following paper:
 ```
   @article{demirel2021mstre,
