@@ -4,30 +4,13 @@ A kaldi recipe for automatic lyrics transcription task.
 
 
 
-If you use the MStreNet recipe, which is the state-of-the-art model for automatic lyrics transcription, please cite following paper:
-```
-  @article{demirel2021mstre,
-  title={MSTRE-Net: Multistreaming Acoustic Modeling for Automatic Lyrics Transcription},
-  author={Demirel, Emir and Ahlb{\"a}ck, Sven and Dixon, Simon},
-  booktitle={In proceedings of ISMIR2021},
-  year={2021}
-}
-```
-Link to paper : https://arxiv.org/pdf/2108.02625.pdf
 
 
-If you use the recipe for the single-stream approach with RNNLM rescoring, please cite the paper below:
-```
-@inproceedings{demirel2020,
-  title={Automatic lyrics transcription using dilated convolutional neural networks with self-attention},
-  author={Demirel, Emir and Ahlback, Sven and Dixon, Simon},
-  booktitle={International Joint Conference on Neural Networks},
-  publisher={IEEE},
-  year={2020}
-}
-```
+## System Details
 
-Link to paper : https://arxiv.org/abs/2007.06486
+Automatic Lyrics Transcription is the task of translating singing voice into text. Jusy like in hybrid speech recognition, our lyrics transcriber consists of separate acoustic, language and pronunciation models.
+
+
 
 ## Setup
 
@@ -120,9 +103,30 @@ The output posteriorgrams are saved as numpy arrays (.npy).
 
 Note that we have used 16kHz for the sample rate and 10ms of hop size.
 
-## System Details
+If you use the MStreNet recipe, which is the state-of-the-art model for automatic lyrics transcription, please cite following paper:
+```
+  @article{demirel2021mstre,
+  title={MSTRE-Net: Multistreaming Acoustic Modeling for Automatic Lyrics Transcription},
+  author={Demirel, Emir and Ahlb{\"a}ck, Sven and Dixon, Simon},
+  booktitle={In proceedings of ISMIR2021},
+  year={2021}
+}
+```
+Link to paper : https://arxiv.org/pdf/2108.02625.pdf
 
-Automatic Lyrics Transcription is the task of translating singing voice into text. Jusy like in hybrid speech recognition, our lyrics transcriber consists of separate acoustic, language and pronunciation models.
+
+If you use the recipe for the single-stream approach with RNNLM rescoring, please cite the paper below:
+```
+@inproceedings{demirel2020,
+  title={Automatic lyrics transcription using dilated convolutional neural networks with self-attention},
+  author={Demirel, Emir and Ahlback, Sven and Dixon, Simon},
+  booktitle={International Joint Conference on Neural Networks},
+  publisher={IEEE},
+  year={2020}
+}
+```
+
+Link to paper : https://arxiv.org/abs/2007.06486
 
 
 
