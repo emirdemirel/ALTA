@@ -1,30 +1,30 @@
 #!/bin/bash
 
+export CUDA_VISIBLE_DEVICES=0,1
+
 set -e # exit on error
 
 # Begin configuration section
-
-nj=40
 
 stage=1
 chain_stage=1
 train_stage=-10
 
-decode_nj=1
+nj=40
+
 
 #DECLARE WHERE YOUR DAMP AND DALI DATA IS LOCATED!!!!
-datadir_damp=
-datadir_dali=
+datadir_damp=wav/damp
+datadir_dali=wav/dali
+datadir_dali_talt=wav/dali_talt
+datadir_jamendo=wav/jamendo
 
+#Declare path to pretrained model: should be sth like 'models/ijcnn'
 pretrained_model=
 
 
-export CUDA_VISIBLE_DEVICES=1,2,3
+help=false
 
-echo "Linking data to local directories"
-mkdir -p wav
-[[ ! -L "wav/damp" ]] && ln -s $datadir_damp
-[[ ! -L "wav/dali" ]] && ln -s $datadir_dali
 
 echo "Using steps and utils from WSJ recipe"
 [[ ! -L "steps" ]] && ln -s $KALDI_ROOT/egs/wsj/s5/steps
@@ -38,6 +38,23 @@ echo "Using steps and utils from WSJ recipe"
 . ./path.sh
 . ./cmd.sh
 
+if [ $help = true ]; then
+   echo "Usage: ./run_mstrenet.sh "
+   echo "This is the main script for the training of the MStreNet"
+   echo "automatic lyrics transcription model (ISMIR2021). "
+   echo "You just have to specify where the datasets are located."
+   echo ""
+   echo "main options (for others, see top of script file)"
+   echo "  --stage                                          # stage of the main running script"
+   echo "  --chain_stage                                    # stage for the DNN training pipeline (chain recipe at stage 13)"
+   echo "  --train_stage                                    # DNN training stage. Should be -10 to initialize the training"
+   echo "  --pretrained_model <model>                       # directory to a pretrained model (if specificed, i.e. models/ijcnn)."
+   echo "                                                   # If this is non-empty, the script will skip training and directly go to stage 14."
+   echo "  --nj <nj>                                        # number of parallel jobs"   
+
+   exit 1;
+fi
+
 
 
 trainset=train_damp_music # At first, we train the GMM-HMM model on DAMP dataset only (until stage 9). 
@@ -46,7 +63,7 @@ trainset=train_damp_music # At first, we train the GMM-HMM model on DAMP dataset
                           # The LFMMI training is done on the combination of these train sets.
                           # For this recipe, we apply the music informed silence tagging on training sets.
 devsets="dev_damp dev_dali"
-test_sets="test_damp dali_talt jamendo_poli"
+test_sets="test_damp dali_talt jamendo"
 
 # This script also needs the phonetisaurus g2p, srilm, sox
 #./local/check_tools.sh || exit 1
@@ -54,6 +71,14 @@ test_sets="test_damp dali_talt jamendo_poli"
 
 chain_affix=_mstrenet
 lang_affix=_music
+
+
+echo "Linking data to local directories"
+mkdir -p wav
+[[ ! -L "wav/damp" ]] && ln -s $datadir_damp
+[[ ! -L "wav/dali" ]] && ln -s $datadir_dali
+[[ ! -L "wav/dali_talt" ]] && ln -s $datadir_dali_talt
+[[ ! -L "wav/jamendo" ]] && ln -s $datadir_jamendo
 
 
 echo; echo "===== Starting at  $(date +"%D_%T") ====="; echo
