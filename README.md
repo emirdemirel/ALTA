@@ -1,4 +1,4 @@
-# ALTA - (A)utomatic (L)yrics (T)ranscription & (A)lignment
+# ALTA - (A)utomatic (L)yrics (T)r(A)nscription
 
 A kaldi recipe for automatic lyrics transcription task.
 
