@@ -36,8 +36,9 @@ docker build --tag alta:latest -f Dockerfile .
 ```
 ### 2) Run the Docker container
 
+```
 docker run alta:latest
-
+```
 ### B) Local Installation
 
 #### 1) Kaldi
