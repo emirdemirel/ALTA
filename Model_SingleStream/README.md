@@ -44,7 +44,7 @@ We have provided the data files (at ```data/{train,dev,test}_damp```) required i
 
 ## System Details
 
-Automatic Lyrics Transcription is the task of translating singing voice into text. Jusy like in hybrid speech recognition, our lyrics transcriber consists of separate acoustic, language and pronunciation models.
+Automatic Lyrics Transcription is the task of translating singing voice into text. Just like in hybrid speech recognition, our lyrics transcriber consists of separate acoustic, language and pronunciation models.
 
 <p align="center">
   <img src="https://github.com/emirdemirel/ALTA/blob/master/img/img-git1.png" width="550" height="160">
