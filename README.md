@@ -66,7 +66,8 @@ pip install -r requirements.txt
 
 * DAMP:
 
-We use the Sing!300x30x2 data within the DAMP repository. To retrieve the data, you need to apply for authorization from https://ccrma.stanford.edu/damp/.
+We use the Sing!300x30x2 data within the DAMP repository. To retrieve the data, you need to apply for authorization from https://ccrma.stanford.edu/damp/ .
+The train/dev/test splits are automatically done within this recipe.
 
 * DALI:
 
