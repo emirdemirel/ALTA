@@ -1,9 +1,22 @@
 # ALTA - (A)utomatic (L)yrics (T)ranscription & (A)lignment
 
-A kaldi recipe for automatic lyrics transcription and audio-to-lyrics alignment tasks.
+A kaldi recipe for automatic lyrics transcription task.
 
-If you use this repository, please cite it as follows:
 
+
+If you use the MStreNet recipe, which is the state-of-the-art model for automatic lyrics transcription, please cite following paper:
+```
+  @article{demirel2021mstre,
+  title={MSTRE-Net: Multistreaming Acoustic Modeling for Automatic Lyrics Transcription},
+  author={Demirel, Emir and Ahlb{\"a}ck, Sven and Dixon, Simon},
+  booktitle={In proceedings of ISMIR2021},
+  year={2021}
+}
+```
+Link to paper : https://arxiv.org/pdf/2108.02625.pdf
+
+
+If you use the recipe for the single-stream approach with RNNLM rescoring, please cite the paper below:
 ```
 @inproceedings{demirel2020,
   title={Automatic lyrics transcription using dilated convolutional neural networks with self-attention},
@@ -19,6 +32,7 @@ Link to paper : https://arxiv.org/abs/2007.06486
 ## Setup
 
 ### 1) Kaldi
+
 This framework is built as a [Kaldi](http://kaldi-asr.org/)[1] recipe 
 For instructions on Kaldi installation, please visit https://github.com/kaldi-asr/kaldi
 
