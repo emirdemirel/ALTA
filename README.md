@@ -134,6 +134,10 @@ which will output:
  --stage                                          # stage of the main running script"
  --chain_stage                                    # stage for the DNN training pipeline (chain recipe at stage 13)"
  --train_stage                                    # DNN training stage. Should be -10 to initialize the training"
+ --datadir_damp                                   # path to DAMP dataset
+ --datadir_dali                                   # path to DALI dataset
+ --datadir_dali_talt                              # path to DALI-TALT dataset
+ --datadir_jamendo                                # path to jamendo dataset
  --pretrained_model <model>                       # directory to a pretrained model (if specificed, i.e. models/ijcnn)."
                                                   # If this is non-empty, the script will skip training and directly go to stage 14."
  --nj <nj>                                        # number of parallel jobs" 
