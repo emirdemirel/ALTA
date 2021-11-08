@@ -62,12 +62,31 @@ pip install -r requirements.txt
 
 * Modify ```KALDI_ROOT``` in  ```s5/path.sh``` according to where your Kaldi installation is.
 
+### A) Retrieve the data:
+
+* DAMP:
+
+We use the Sing!300x30x2 data within the DAMP repository. To retrieve the data, you need to apply for authorization from https://ccrma.stanford.edu/damp/.
+
+* DALI:
+
+DALI_v2.0 is used to train the polyphonic and cross-domain lyrics transcription models. To retrieve the data, please refer to the relevant Github repository at:
+
+https://github.com/gabolsgabs/DALI
+
+* DALI-TALT:
+
+This dataset is a subset of DALI, presented in .... It is the largest test set used for evaluating polyphonic ALT models. The data can be retrieved via the tutorial at: https://github.com/emirdemirel/DALI-TestSet4ALT .
+
+* Jamendo:
+
+Jamendo(lyrics) is a benchmark evaluation set for both lyrics transcription and audio-to-lyrics alignment tasks. It is also used in MIREX challenges. Data can be retrieved at https://github.com/f90/jamendolyrics .
+
 ### A) Running the lyrics transcription - training pipeline
 
 * Retrieve Data:
 
-The s5 recipe is based on the DSing!300x30x2 dataset within Smule's DAMP[2] repository. To retrieve the DSing!300x30x2, you need to apply for authorization from https://ccrma.stanford.edu/damp/.
-
+The s5 recipe is based on the DSing!300x30x2 dataset within Smule's DAMP[2] repository. To retrieve the DSing!300x30x2,
 * Set the path to DAMP - Sing!300x30x2 data:
 
 ```
