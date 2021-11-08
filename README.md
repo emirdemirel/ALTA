@@ -31,12 +31,17 @@ Link to paper : https://arxiv.org/abs/2007.06486
 
 ## Setup
 
-### 1) Kaldi
+### A) Docker Installation
+
+
+### B) Local Installation
+
+#### 1) Kaldi
 
 This framework is built as a [Kaldi](http://kaldi-asr.org/)[1] recipe 
 For instructions on Kaldi installation, please visit https://github.com/kaldi-asr/kaldi
 
-### 2) Dependencies
+#### 2) Dependencies
 
 ```
 pip install -r requirements.txt
@@ -89,22 +94,6 @@ Note that we have used 16kHz for the sample rate and 10ms of hop size.
 
 Automatic Lyrics Transcription is the task of translating singing voice into text. Jusy like in hybrid speech recognition, our lyrics transcriber consists of separate acoustic, language and pronunciation models.
 
-<p align="center">
-  <img src="https://github.com/emirdemirel/ALTA/blob/master/img/img-git1.png" width="550" height="160">
-</p>
-
-**Acoustic Model**: Sequence discriminative training on MMI criteria[4].
-
-The neural network architecture consists of 2D Convolutions, factorized time-delay and self-attention layers:
-<p align="center">
-    <img src="https://github.com/emirdemirel/ALTA/blob/master/img/img-git2.png?raw=true" width="250" height="310">
-</p>
-
-**Language Model**: We use the lyrics of recent (2015-2018) popular songs for training the LM (```s5/conf/corpus.txt```).
-
-**Pronunciation Model**: The standard CMU-Sphinx English pronunciation dictionary (http://www.speech.cs.cmu.edu/cgi-bin/cmudict). 
-
-**(Work in progress :** The singing-adapted pronunciation dictionary will be provided soon, as well as grapheme based lexicons for modeling unseen words.**)**
 
 
 ### References
