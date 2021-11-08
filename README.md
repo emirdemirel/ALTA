@@ -2,6 +2,30 @@
 
 A Kaldi[1] recipe for automatic lyrics transcription.
 
+## Table of Contents
+
+- [ALTA - (A)utomatic (L)yrics (T)r(A)nscription](#alta----a-utomatic--l-yrics--t-r-a-nscription)
+  * [System Details](#system-details)
+  * [Setup](#setup)
+    + [A) Docker Installation](#a--docker-installation)
+    + [1) Build the Docker image](#1--build-the-docker-image)
+    + [2) Run the Docker container](#2--run-the-docker-container)
+    + [B) Local Installation](#b--local-installation)
+      - [1) Kaldi](#1--kaldi)
+      - [2) Dependencies](#2--dependencies)
+  * [How to run](#how-to-run)
+    + [A) Data preparation:](#a--data-preparation-)
+      - [1) Retrieve the data:](#1--retrieve-the-data-)
+      - [1) Locate:](#1--locate-)
+        * [Step 1-a (Docker use ONLY):](#step-1-a--docker-use-only--)
+    + [B) Running the training pipeline](#b--running-the-training-pipeline)
+    + [C) (OPTIONAL) Extract frame-level Phoneme posteriorgrams:](#c---optional--extract-frame-level-phoneme-posteriorgrams-)
+    + [Future Work](#future-work)
+    + [Citation](#citation)
+    + [References](#references)
+    + [Important Notice:](#important-notice-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 ## System Details
