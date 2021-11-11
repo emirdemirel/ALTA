@@ -65,7 +65,9 @@ trainset=train_damp_music # At first, we train the GMM-HMM model on DAMP dataset
                           # Once we generate alignments using the lexicon with estimated pronunciation
                           # probabilities, we retrain another GMM-HMM model on both 'train_damp' and 'train_dali'.
                           # The LFMMI training is done on the combination of these train sets.
-                          # For this recipe, we apply the music informed silence tagging on training sets.
+                          # The '_music' suffix stands for the dataset version where music-informed
+                          # silence modeling is applied.
+                          
 devsets="dev_damp dev_dali"
 test_sets="test_damp dali_talt jamendo"
 
