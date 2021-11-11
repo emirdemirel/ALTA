@@ -115,20 +115,6 @@ Jamendo(lyrics) is a benchmark evaluation set for both lyrics transcription and 
 datadir_jamendo='path-to-jamendo'
 ```
 
-#### 1) Locate:
-
-If you work locally, you can directly use the above defined variables to run the main script, so you can directly proceed to **Step B**
-
-##### Step 1-a (Docker use ONLY):
- 
-Copy the datasets to the Docker container. First retrieve the Docker container ID by typing ```docker ps -a```, and find the relevant one with the image tag ```alta:latest```. Suppose your container ID is ```${docker_id}```. Then perform copying as follows:
-
-```
-docker cp ${datadir_damp}  ${docker_id}/ALTA/wav/damp 
-docker cp ${datadir_dali}  ${docker_id}/ALTA/wav/dali 
-docker cp ${datadir_dali_talt}  ${docker_id}/ALTA/wav/dali_talt 
-docker cp ${datadir_jamendo}  ${docker_id}/ALTA/wav/jamendo
-```
 
 ### B) Running the training pipeline
 
