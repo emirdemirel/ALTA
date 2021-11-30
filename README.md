@@ -118,7 +118,24 @@ datadir_jamendo='path-to-jamendo'
 
 ### B) Running the training pipeline
 
-There are two recipes included in this repository. The first one is a single-stream CTDNN - self-attention based acoustic model with RNNLM rescoring (1) presented in IJCNN2020[9], and the MStre-Net[3] recipe which has a multistream cross-domain acoustic model(2), which is published in ISMIR2021. The most recent model is the one in (2), so we recommend running te following script:
+There are two recipes included in this repository. The first one is a single-stream CTDNN - self-attention based acoustic model with RNNLM rescoring (1) presented in IJCNN2020[9], and the MStre-Net[3] recipe which has a multistream cross-domain acoustic model(2), which is published in ISMIR2021. 
+
+ ##### 1 - Dilated Convolutional Neural Networks with Self-Attention (single-stream):
+ 
+ This is the previous recipe for lyrics transcription. It is written to work on DAMP. However, you can modify the relevant variables in the training scripts.
+ 
+ Define the absolute path to the DAMP - Sing!300x30x2  repository.
+ 
+ ```
+ audiopath = path-to-DAMP-dataset
+```
+Then, simply pass the ```$audiopath``` variable to the main recipe:
+```
+./run_singlestream.sh $audiopath
+```
+##### 2 - MStreNet : Multistreaming Time-Delay Neural Networks & Cross-domain Training
+
+The most recent model is the one in (2), so we recommend running te following script:
 
 ```
 ./run_mstrenet.sh --datadir_damp ${datadir_damp} --datadir_dali ${datadir_dali} \
